@@ -1,0 +1,123 @@
+:root {
+    --color_primario: #4A3933;
+    --color_secundario: #F0A500;
+    --color_terciario: #E45826;
+    --color_cuaternario: #E6D5B8;
+    --header_altura: 50px;
+}
+
+
+@font-face {
+    font-family: 'curva';
+    src: url('../assets/fonts/BalsamiqSans-Regular.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* background-color: black; */
+    font-family: 'curva';
+}
+
+
+/* Textos */
+
+.main_header {
+    height: var(--header_altura);
+}
+
+.txt_blanco {
+    color: white;
+}
+
+.botones_principales_container {
+    height: calc(100vh - var(--header_altura));
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.botones_principales_container > div {
+    width: 50%;
+    height: 50%;
+}
+
+.botones_principales_container > div:nth-child(1) {
+    background-color: var(--color_primario);
+}
+
+.botones_principales_container > div:nth-child(2) {
+    background-color: var(--color_cuaternario);
+}
+
+.botones_principales_container > div:nth-child(3) {
+    background-color: var(--color_terciario);
+}
+
+.botones_principales_container > div:nth-child(4) {
+    background-color: var(--color_secundario);
+}
+
+.botones_principales_container > div > a {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: unset;
+    font-size: 30px;
+}
+
+/* Clases generales */
+
+/* widths */
+
+.w_100 {
+    width: 100%;
+}
+
+/* displays */
+
+.d_block {
+    display: block;
+}
+
+.d_inline_block {
+    display: inline-block;
+}
+
+.d_hidden {
+    visibility: hidden;
+}
+
+/* flex */
+
+.d_flex {
+    display: flex;
+}
+
+.justify_evenly {
+    justify-content: space-evenly;
+}
+
+.all_centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.txt_centrado {
+    text-align: center;
+}
+
+.login_form {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.login_form > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
