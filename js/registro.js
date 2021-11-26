@@ -1,72 +1,92 @@
-if(!localStorage.usuarios) {
-    localStorage.usuarios = JSON.stringify([])    
-}
+// if(!localStorage.usuarios) {
+//     localStorage.usuarios = JSON.stringify([])    
+// }
 
-const caracteresMinimosPassword = 8
-const caracterRaro = '3'
+const caracteresMinimosPassword = 5
+const caracterRaro = '!'
 const caracteresMinimosUsuario = 5
-const caracterRaroUsuario = '#'
 
 class RegistroUsuario {
-    // constructor(){
-    //     this.inputUsuario = 
-    // }
+    constructor(){
+
+    }
+
     revisarUsuariosRegistrados(){
         const usuariosJson = JSON.parse(localStorage.usuarios)
         return usuariosJson.length > 0 
     }
 
-    registrarNuevoUsuario( nombre, password ){
-        const nuevoUsuario = { nombre, password }
-        const usuariosJson = JSON.parse(localStorage.usuarios)
+    // registrarNuevoUsuario( nombre, password ){
+    //     const nuevoUsuario = { nombre, password }
+    //     const usuariosJson = JSON.parse(localStorage.usuarios)
 
-        const nuevaListaUsuarios = [
-            ...usuariosJson,
-            nuevoUsuario
-        ]
+    //     const nuevaListaUsuarios = [
+    //         ...usuariosJson,
+    //         nuevoUsuario
+    //     ]
 
-        localStorage.usuarios = JSON.stringify(nuevaListaUsuarios)
+    //     localStorage.usuarios = JSON.stringify(nuevaListaUsuarios)
+    // }
+
+    static registrarNuevoUsuario(nombre, password){
+        const query = 'INSERT INTO usuarios (nombre, password) VALUES (?, ?)'
+        const values = [ nombre, password ]
+
+        db.transaction( tx => {
+            tx.executeSql(query, values, () => location.href = '../index.html')
+        })
     }
 
-    revisarSiExisteUsuario(inputUsuario){
-        const usuariosJson = JSON.parse(localStorage.usuarios)
-        const usuario = usuariosJson.find( usuarioActual => usuarioActual.nombre === inputUsuario.value)
-        return usuario ? true : false
+    // static revisarSiExisteUsuario(inputUsuario){
+    //     const usuariosJson = JSON.parse(localStorage.usuarios)
+    //     const usuario = usuariosJson.find( usuarioActual => usuarioActual.nombre === inputUsuario.value)
+    //     return usuario ? true : false
+    // }
+
+    static revisarSiExisteUsuario(nombre){
+        const query = 'SELECT nombre FROM usuarios WHERE nombre=? LIMIT 1'
+        const values = [nombre]
+
+        return new Promise( (resolve, reject) => {
+            db.transaction( tx => {
+                tx.executeSql( query, values, ( tx, results ) => {
+                        resolve( results.rows.length == 1 )
+                    }
+                )
+            })
+        })
     }
 
-    revisarSiNombreDeUsuarioEsValido(nombreUsuario){
-        return nombreUsuario.length >= caracteresMinimosUsuario && nombreUsuario.includes(caracterRaroUsuario)
+    static revisarSiNombreDeUsuarioEsValido(nombreUsuario){
+        return nombreUsuario.length >= caracteresMinimosUsuario
     }
 
-    revisarSiContrasenasCoinciden(inputContrasena, inputContrasenaRepetir){
-        return inputContrasena.value === inputContrasenaRepetir.value
+    static revisarSiContrasenasCoinciden(contrasena, contrasenaRepetida){
+        return contrasena === contrasenaRepetida
     }
 
-    revisarSiContrasenaEsValida(contrasena, largoContrasena){
+    static revisarSiContrasenaEsValida(contrasena, largoContrasena){
         return contrasena.length >= largoContrasena && contrasena.includes(caracterRaro)
     }
 }
 
-const registro = new RegistroUsuario
-
-function registrarNuevoUsuario(ev){
+async function registrarNuevoUsuario(ev){
     ev.preventDefault()
     const [inputUsuario, inputContrasena, inputContrasenaRepetir] = ev.target
-    const usuarioExiste = registro.revisarSiExisteUsuario(inputUsuario)
-    const contrasenasCoinciden = registro.revisarSiContrasenasCoinciden(inputContrasena, inputContrasenaRepetir)
-    const contrasenaEsValida = registro.revisarSiContrasenaEsValida(inputContrasena.value, caracteresMinimosPassword)
-    const nombreUsuarioValido = registro.revisarSiNombreDeUsuarioEsValido(inputUsuario.value)
+    const usuarioExiste = await RegistroUsuario.revisarSiExisteUsuario(inputUsuario.value)
+    const contrasenasCoinciden = RegistroUsuario.revisarSiContrasenasCoinciden(inputContrasena.value, inputContrasenaRepetir.value)
+    const contrasenaEsValida = RegistroUsuario.revisarSiContrasenaEsValida(inputContrasena.value, caracteresMinimosPassword)
+    const nombreUsuarioValido = RegistroUsuario.revisarSiNombreDeUsuarioEsValido(inputUsuario.value)
 
     if(usuarioExiste){
         alert('el usuario ya existe')
     } else if(!nombreUsuarioValido){
-        alert(`el nombre de usuario debe contener al menos ${caracteresMinimosUsuario} caracteres y un ${caracterRaroUsuario}`)
+        alert(`el nombre de usuario debe contener al menos ${caracteresMinimosUsuario} caracteres`)
     } else if(!contrasenasCoinciden){
         alert('las contraseñas no coinciden')
     } else if(!contrasenaEsValida){
         alert(`contraseña debe incluir al menos ${caracteresMinimosPassword} caracteres y un ${caracterRaro}`)
     } else {
-        registro.registrarNuevoUsuario(inputUsuario.value, inputContrasena.value)
-        location.href = '../index.html'
+        RegistroUsuario.registrarNuevoUsuario(inputUsuario.value, inputContrasena.value)
     }
 }

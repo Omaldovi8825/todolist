@@ -101,6 +101,20 @@ body {
     justify-content: space-evenly;
 }
 
+.justify_around {
+    justify-content: space-around;
+}
+
+.align_v_middle {
+    align-items: center;
+}
+
+.flex_around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .all_centrado {
     display: flex;
     justify-content: center;

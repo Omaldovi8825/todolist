@@ -8,55 +8,61 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/generales.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+    <script src="../js/sesion.js"></script>
+    <script src="../js/openDB.js"></script>
 </head>
 <body>
 
     <header class="header_pendientes">
-        <a href="../index.html">Home</a>
-        <h4>Pendientes</h4>
-        <p class="d_hidden">Home</p>
+        <a href="./menu.html">Home</a>
+        <h4>Pendientes generales</h4>
+        <a class="d_hidden" href="./menu.html">Home</a>
     </header>
 
-    <table class="tabla_pendientes_generales">
-        <thead>
-            <tr class="cabecera_pendientes">
-                <th>No.</th>
-                <th>Nombre</th>
-                <th>Vence</th>
-                <th>C</th>
-                <th>B</th>
-            </tr>
-        </thead>
-        <tbody id="tbodyPendientes">
-            <!-- <tr>
-                <td>1</td>
-                <td>comp suusus sususus shshshshhs shshsh ysysysysy ssususususu</td>
-                <td>20/10/2021</td>
-                <td>
-                    <i class="fas fa-check" onclick="marcarPendienteCompletado()"></i>
-                </td>
-                <td>
-                    <i class="fas fa-trash-alt" onclick="eliminarPendiente(this)"></i>
-                </td>
-            </tr> -->
-        </tbody>
-    </table>
+    <!-- tarjetas pendientes -->
+    <section class="seccion_tarjetas">
+        <div class="general_card_contenedor">
+            <div class="general_card">
+                <p>No. 1</p>
+                <h4>Pagar la luz</h4>
+                <p>hacer pago en línea</p>
+                <!-- card footer -->
+                <div>
+                    <div class="bolita_prioridad"></div>
+                    <p>12/12/2021</p>
+                </div>
+            </div>
+        </div>
+        <div class="general_card_contenedor">
+            <div class="general_card">
+                <p>No. 1</p>
+                <h4>Pagar la luz</h4>
+                <p>hacer pago en línea</p>
+                <!-- card footer -->
+                <div>
+                    <div class="bolita_prioridad"></div>
+                    <p>12/12/2021</p>
+                </div>
+            </div>
+        </div>
+        <div class="general_card_contenedor">
+            <div class="general_card">
+                <p>No. 1</p>
+                <h4>Pagar la luz</h4>
+                <p>hacer pago en línea</p>
+                <!-- card footer -->
+                <div>
+                    <div class="bolita_prioridad"></div>
+                    <p>12/12/2021</p>
+                </div>
+            </div>
+        </div>
 
-    <!-- Agregar pendiente -->
-    <section class="seccion_agregar_pendiente">
-        <div>
-            <label>Nuevo pendiente</label>
-            <input type="text" class="d_block w_100" id="nuevoPendiente" style="font-size: 16px;">
-        </div>
-        <div>
-            <label for="">Fecha de vencimiento</label>
-            <input type="date" id="fechaVencimiento">
-        </div>
-        <div class="all_centrado">
-            <button onclick="agregarPendiente()">Agregar</button>
-        </div>
+        
     </section>
-
+    <button class="btn_nuevo_pendiente">Agregar</button>
+    
     <script src="../js/main.js" ></script>
     <script src="../js/pendientes.js" ></script>
 </body>

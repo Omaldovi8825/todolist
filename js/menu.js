@@ -1,6 +1,3 @@
-
-const haySesion = JSON.parse(localStorage.haySesionActiva)
-
-if(!haySesion){
-    location.href = '../index.html'
-}
+db.transaction( tx => {
+    tx.executeSql('CREATE TABLE IF NOT EXISTS generales (id_usuario, titulo, descripcion, fecha, prioridad)')
+})

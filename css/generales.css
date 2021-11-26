@@ -3,33 +3,24 @@
     justify-content: space-around;
 }
 
-.tabla_pendientes_generales {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.tabla_pendientes_generales th, .tabla_pendientes_generales td  {
+.seccion_tarjetas {
     border: 1px solid black;
-}
-
-.tabla_pendientes_generales .cabecera_pendientes > th:nth-child(1) {
-    width: 5%;
-}
-
-.tabla_pendientes_generales .cabecera_pendientes > th:nth-child(2) {
-    width: 40%;
-}
-
-.tabla_pendientes_generales .cabecera_pendientes > th:nth-child(3) {
-    width: 30%;
-}
-
-.seccion_agregar_pendiente {
-    border: 1px solid black;
-    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.seccion_tarjetas .general_card_contenedor {
+    width: 50%;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.general_card_contenedor .general_card {
+    border: 1px solid black;
+}
+
+.btn_nuevo_pendiente {
     position: fixed;
-    bottom: 0;
-    padding: 10px;
+    right: 10px;
+    bottom: 10px;
 }
