@@ -59,11 +59,35 @@
             </div>
         </div>
 
-        
+        <pendiente-general
+            titulo="hola"
+            descripcion="Pagar la renta"
+            fecha="12/12/2023"
+        ></pendiente-general>
+
     </section>
-    <button class="btn_nuevo_pendiente">Agregar</button>
+
+    <!-- Modal agregar pendiente -->
+    <form id="modalPendientes" class="modal_pendientes" onsubmit="agregarPendiente(event)">
+        <i class="fas fa-times-circle" onclick=" toggleModalrPendiente(modalPendientes, 'close')"></i>
+        <label>Nombre</label>
+        <input type="text">
+        <label>Descripción</label>
+        <textarea></textarea>
+        <label >Fecha</label>
+        <input type="date">
+        <label>Priridad</label>
+        <select>
+            <option value="1">Poca</option>
+            <option value="2">Mediana</option>
+            <option value="3">Urgente</option>
+        </select>
+        <button>Agregar</button>
+    </form>
+
+    <button class="btn_nuevo_pendiente" onclick="toggleModalrPendiente(modalPendientes, 'open')">A</button>
     
-    <script src="../js/main.js" ></script>
     <script src="../js/pendientes.js" ></script>
+    <script src="../assets/webComponents/pendienteGeneralCard.js" ></script>
 </body>
 </html>

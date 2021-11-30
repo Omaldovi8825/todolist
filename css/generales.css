@@ -1,3 +1,7 @@
+:root {
+    --altura_modal: 50vh;
+}
+
 .header_pendientes {
     display: flex;
     justify-content: space-around;
@@ -23,4 +27,31 @@
     position: fixed;
     right: 10px;
     bottom: 10px;
+}
+
+.modal_pendientes {
+    border: 1px solid red;
+    height: var(--altura_modal);
+    bottom: -50vh;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    z-index: 2;
+    position: fixed;
+    transition: 1.5s bottom;
+}
+
+.modal_pendientes label, .modal_pendientes input, .modal_pendientes select { 
+    display: block;
+}
+
+.modal_pendientes input, .modal_pendientes textarea, .modal_pendientes select  {
+    width: 100%;
+    font-size: 16px;
+}
+
+.modal_pendientes .fa-times-circle {
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
