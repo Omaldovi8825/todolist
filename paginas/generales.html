@@ -21,13 +21,12 @@
     </header>
 
     <!-- tarjetas pendientes -->
-    <section class="seccion_tarjetas">
-        <div class="general_card_contenedor">
+    <section class="seccion_tarjetas" id="contenedorTarjetas">
+        <!-- <div class="general_card_contenedor">
             <div class="general_card">
                 <p>No. 1</p>
                 <h4>Pagar la luz</h4>
                 <p>hacer pago en línea</p>
-                <!-- card footer -->
                 <div>
                     <div class="bolita_prioridad"></div>
                     <p>12/12/2021</p>
@@ -39,7 +38,6 @@
                 <p>No. 1</p>
                 <h4>Pagar la luz</h4>
                 <p>hacer pago en línea</p>
-                <!-- card footer -->
                 <div>
                     <div class="bolita_prioridad"></div>
                     <p>12/12/2021</p>
@@ -51,19 +49,12 @@
                 <p>No. 1</p>
                 <h4>Pagar la luz</h4>
                 <p>hacer pago en línea</p>
-                <!-- card footer -->
                 <div>
                     <div class="bolita_prioridad"></div>
                     <p>12/12/2021</p>
                 </div>
             </div>
-        </div>
-
-        <pendiente-general
-            titulo="hola"
-            descripcion="Pagar la renta"
-            fecha="12/12/2023"
-        ></pendiente-general>
+        </div> -->
 
     </section>
 
@@ -78,6 +69,7 @@
         <input type="date">
         <label>Priridad</label>
         <select>
+            <option value="" disabled>Selecciona una opción</option>
             <option value="1">Poca</option>
             <option value="2">Mediana</option>
             <option value="3">Urgente</option>
@@ -85,7 +77,9 @@
         <button>Agregar</button>
     </form>
 
-    <button class="btn_nuevo_pendiente" onclick="toggleModalrPendiente(modalPendientes, 'open')">A</button>
+    <button class="btn_nuevo_pendiente" onclick="toggleModalrPendiente(modalPendientes, 'open')">
+        <i class="fas fa-plus-circle"></i>
+    </button>
     
     <script src="../js/pendientes.js" ></script>
     <script src="../assets/webComponents/pendienteGeneralCard.js" ></script>

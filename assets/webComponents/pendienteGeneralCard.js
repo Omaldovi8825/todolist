@@ -53,12 +53,11 @@ class cardPendienteGeneral extends HTMLElement {
                 :host {
                     --primary-background: #5a6cb2;
                     width: 50%;
-                    padding: 5px;
                 }
                 
                 .general_card {
                     border: 1px solid black;
-
+                    padding: 5px;
                 }
 
             </style>

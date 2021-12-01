@@ -27,6 +27,12 @@
     position: fixed;
     right: 10px;
     bottom: 10px;
+    background: none;
+    border: none;
+}
+
+.btn_nuevo_pendiente i {
+    font-size: 30px;
 }
 
 .modal_pendientes {
